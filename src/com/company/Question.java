@@ -76,7 +76,7 @@ public class Question {
                 throw new QuizException();
             } catch (QuizException qe) {
                 System.out.println("Ответ не может содержать другие буквы и символы, кроме А, Б, В или Г (без учета регистра)");
-                validation(scanner);
+                answer = validation(scanner);
             }
         } return answer;
     }
