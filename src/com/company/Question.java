@@ -71,13 +71,10 @@ public class Question {
         Pattern pattern = Pattern.compile("[^абвг]{1,4}");
         Matcher matcher = pattern.matcher(answer.toLowerCase(Locale.ROOT));
 
-        if (matcher.find()) {
-            try {
-                throw new QuizException();
-            } catch (QuizException qe) {
-                System.out.println("Ответ не может содержать другие буквы и символы, кроме А, Б, В или Г (без учета регистра)");
-                answer = validation(scanner);
-            }
+        while (matcher.find()) {
+            System.out.println("Ответ не может содержать другие буквы и символы, кроме А, Б, В или Г (без учета регистра)");
+            answer = scanner.nextLine();
+            matcher = pattern.matcher(answer.toLowerCase(Locale.ROOT));
         } return answer;
     }
 
