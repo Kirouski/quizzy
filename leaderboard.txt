@@ -1,0 +1,7 @@
+Ron:12
+Yury:11
+Andrey:9
+Artsom:8
+Bil:3
+Yury:3
+alex:3
