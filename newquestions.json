@@ -1,0 +1,91 @@
+[ {
+  "question" : "Столица Беларуси?",
+  "offeredAnswers" : [ "Минск", "Гродно", "Витебск", "Могилев" ],
+  "correctAnswer" : "а",
+  "correctAnswers" : null,
+  "tag" : "SCQ"
+}, {
+  "question" : "Самое глубокое озеро в мире называется Байкал. В какой из перечисленных стран оно находится?",
+  "offeredAnswers" : [ "Канада", "Россия", "Африка", "Египет" ],
+  "correctAnswer" : "б",
+  "correctAnswers" : null,
+  "tag" : "SCQ"
+}, {
+  "question" : "В какой из предложенных стран находятся самые высокие и известные пирамиды фараонов?",
+  "offeredAnswers" : [ "Канада", "Россия", "Африка", "Египет" ],
+  "correctAnswer" : "г",
+  "correctAnswers" : null,
+  "tag" : "SCQ"
+}, {
+  "question" : "В каком городе можно увидеть Эйфелеву башню и побывать в Диснейленде?",
+  "offeredAnswers" : [ "Париж", "Лондон", "Венеция", "Прага" ],
+  "correctAnswer" : "а",
+  "correctAnswers" : null,
+  "tag" : "SCQ"
+}, {
+  "question" : "Уникальный город на воде, славящийся своими карнавалами?",
+  "offeredAnswers" : [ "Париж", "Лондон", "Венеция", "Прага" ],
+  "correctAnswer" : "в",
+  "correctAnswers" : null,
+  "tag" : "SCQ"
+}, {
+  "question" : "Выберите вариант, в котором город-столица и страна имеют одинаковые названия:",
+  "offeredAnswers" : [ "Чикаго", "Cингапур", "Мальта", "Бразилия" ],
+  "correctAnswer" : "б",
+  "correctAnswers" : null,
+  "tag" : "SCQ"
+}, {
+  "question" : "В каком городе впервые было построено (Чёртово колесо)?",
+  "offeredAnswers" : [ "Чикаго", "Cингапур", "Мальта", "Бразилия" ],
+  "correctAnswer" : "а",
+  "correctAnswers" : null,
+  "tag" : "SCQ"
+}, {
+  "question" : "Какая европейская столица, имеет название как у богини?",
+  "offeredAnswers" : [ "Эрио", "Олимпиада", "Багдад", "Афины" ],
+  "correctAnswer" : "г",
+  "correctAnswers" : null,
+  "tag" : "SCQ"
+}, {
+  "question" : "Столица США?",
+  "offeredAnswers" : [ "" ],
+  "correctAnswer" : "Вашингтон",
+  "correctAnswers" : null,
+  "tag" : "TQ"
+}, {
+  "question" : "В каком городе распологается падающая башня?",
+  "offeredAnswers" : [ "" ],
+  "correctAnswer" : "Пиза",
+  "correctAnswers" : null,
+  "tag" : "TQ"
+}, {
+  "question" : "Какой город признан самым населеннам?",
+  "offeredAnswers" : [ "" ],
+  "correctAnswer" : "Токио",
+  "correctAnswers" : null,
+  "tag" : "TQ"
+}, {
+  "question" : "Какие города распологаются в России?",
+  "offeredAnswers" : [ "Вязьма", "Туапсе", "Йошкар-Ола", "Улан-Удэ" ],
+  "correctAnswer" : null,
+  "correctAnswers" : [ "а", "б", "в", "г" ],
+  "tag" : "MCQ"
+}, {
+  "question" : "Какие города расположены в Индии?",
+  "offeredAnswers" : [ "Сингапур", "Мумбаи", "Пекин", "Дали" ],
+  "correctAnswer" : null,
+  "correctAnswers" : [ "б", "г" ],
+  "tag" : "MCQ"
+}, {
+  "question" : "Какие страны называют 'скандинавским'?",
+  "offeredAnswers" : [ "Норвегия", "Бельгия", "Швеция", "Финляндия" ],
+  "correctAnswer" : null,
+  "correctAnswers" : [ "а", "в", "г" ],
+  "tag" : "MCQ"
+}, {
+  "question" : "Какие из перечисленных городов относятся к так называемому 'Янтарному краю'?",
+  "offeredAnswers" : [ "Светлогорск", "Балтийск", "Калининград", "Калязин" ],
+  "correctAnswer" : null,
+  "correctAnswers" : [ "а", "б", "в" ],
+  "tag" : "MCQ"
+} ]
