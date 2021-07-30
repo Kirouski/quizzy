@@ -1,56 +1,49 @@
 package com.company;
 
 
+import java.io.*;
 import java.util.*;
 
 
 public class QuizMain {
 
-    private static User user;
-    private static Question question;
-    private TreeSet<Integer> currentAnswers;
     private static int score;
-    private static Map<String, String> userAnswers = new TreeMap<>();
+    private static Map<String, Integer> leaderboard = new TreeMap<>();
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException, ClassNotFoundException {
 
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Привет. Введи свое имя: ");
 
-        user = new User(scanner.nextLine());
+        showInfo();
 
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
-        Map<String, String> answers8 = new TreeMap<>();
-        UserAnswers userAnswers = new UserAnswers(user, answers8);
-
-
-//       startApp(scanner);
 
         takeQuiz(scanner);
+
+        System.out.println("Теперь таблица рейтинга выглядит следующим образом");
+        showLeaderboard();
+
+        scanner.close();
     }
 
 
-//    static void startApp (Scanner scanner) {
-//
-//        System.out.println("Выбери режим:" + "\n 1. Пройти Квиз" + "\n 2. Посмотреть рейтинговую таблицу" + "\n Введи 1 или 2");
-//
-//        int mode = scanner.nextInt();
-//
-//        try {
-//            Thread.sleep(1000);
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
-//
-//        if (mode == 1) {
-//            takeQuiz(scanner);
-//        }
-//    }
-
     static void takeQuiz(Scanner scanner) {
 
+
+        System.out.println("Привет. Введи свое имя: ");
+        String username = scanner.nextLine();
+
         Question[] qArray = Question.readFromJSON();
+
+
+
+
 
 
         long before = System.currentTimeMillis();
@@ -63,7 +56,6 @@ public class QuizMain {
 
                 String answer = Question.validation(scanner); //считывание ответа, валидация
                 qArray[i].setCurrentAnswer(answer); // присваивание ответа
-                userAnswers.put(qArray[i].question, answer); // запись вопроса и ответа пользователя в мэп
                 if (qArray[i].checkAnswer()) { // проверка правильности ответа
                     score++; //начисление балла за правильный ответ
                     System.out.println("верно");
@@ -73,7 +65,6 @@ public class QuizMain {
 
                 String answer = scanner.nextLine().toLowerCase(Locale.ROOT);
                 qArray[i].setCurrentAnswer(answer);
-                userAnswers.put(qArray[i].question, answer);
                 if (qArray[i].checkAnswer()) {
                     score++;
                     System.out.println("верно");
@@ -83,7 +74,6 @@ public class QuizMain {
 
                 String answer = Question.validation(scanner);
                 qArray[i].setCurrentAnswers(qArray[i].treeSetCurAns(answer)); //создание трисета из строки и присваивание ответа
-                userAnswers.put(qArray[i].question, answer);
                 if (qArray[i].checkAnswerMSQ()) {
                     score++;
                     System.out.println("верно");
@@ -94,9 +84,64 @@ public class QuizMain {
         long after = System.currentTimeMillis();
 
         System.out.println("Ваш результат " + score + "/" + qArray.length);
+        leaderboard.put(username, score);
+        try {
+            saveResult();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         System.out.println("Затраченное время: " + ((after - before) / 1000) + " сек");
 
         scanner.close();
     }
+
+
+    static void saveResult() throws IOException {
+
+        File file = new File("leaderboard.txt");
+        FileWriter fileWriter = new FileWriter(file, true);
+        try (BufferedWriter bf = new BufferedWriter(fileWriter)) {
+            for (Map.Entry<String, Integer> entry : leaderboard.entrySet()) {
+                bf.write(entry.getKey() + ":" + entry.getValue());
+                bf.newLine();
+            }
+        }
+    }
+
+    static void showLeaderboard() {
+
+        try {
+            File myObj = new File("leaderboard.txt");
+            TreeMap<Integer, String> tm = new TreeMap<>(Collections.reverseOrder());
+            Scanner myReader = new Scanner(myObj);
+            while (myReader.hasNextLine()) {
+                String data = myReader.nextLine();
+                String [] array = data.split(":");
+                tm.put(Integer.parseInt(array[1]), array[0]);
+            }
+
+            int place = 0;
+            for (Map.Entry<Integer, String> entry : tm.entrySet()) {
+                place++;
+                System.out.println(place + ". " +  entry.getValue() + " Результат: "  + entry.getKey());
+            }
+
+            myReader.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+    }
+
+    static void showInfo () {
+        System.out.println("Правила квиза:" +
+        "\n1. Вариант ответа может быть один, состоящий из нескольких вариантов, либо текстовым." +
+        "\n2. Для ввода ответа пользуйтесь кириллицей(без учета регистра)." +
+        "\n3. Для подтверждения ответа, нажмите ENTER." +
+        "\n4. Если вариантов ответа несколько, вводите варианты без пробелов в одну строку.");
+    }
 }
+
+
 
